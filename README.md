@@ -1,6 +1,6 @@
 # Comprehensive Analysis of Distributed Machine Learning Approaches
 
-All the implementation use MNIST dataset and can be iimported directly from the libraries. The code can be run directly using the jupyter notebooks.
+All the implementation use MNIST dataset and can be imported directly from the libraries. The code can be run directly using the jupyter notebooks.
 
 ## [All reduce](https://github.com/amoghraj096/CECS-574/blob/main/AllReduce.ipynb)
 
