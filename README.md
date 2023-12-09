@@ -2,7 +2,7 @@
 
 All the implementation use MNIST dataset and can be imported directly from the libraries. The code can be run directly using the jupyter notebooks.
 
-## [All reduce](https://github.com/amoghraj096/CECS-574/blob/main/AllReduce.ipynb)
+## All Reduce
 
 The code sets up a deep neural network model for federated learning on the MNIST dataset using TensorFlow. It defines a model architecture, loss function, optimizer with a learning rate schedule, and splits the data into a specified number of clients. The training loop iterates through the clients and simulates local training, applying gradient updates to each client's model. It then averages the client weights with the global model's weights to update the global model. Finally, it evaluates the global model's performance on the test dataset.
 
@@ -24,6 +24,9 @@ model.set_weights(averaged_weights)
 ```
 > Inside the training loop for each client, after training the client's local model (client_model), the client's weights (client_weights) are averaged with the global model's weights (global_weights). The averaging is performed element-wise for each corresponding weight tensor between the global model and the client model. After averaging, the global model's weights are updated with these averaged weights using model.set_weights(averaged_weights).
 
+> [!NOTE]
+> [Link](https://github.com/amoghraj096/CECS-574/blob/main/AllReduce.ipynb) to the notebook.
+
 ## Parameter server
 The code defines a parameter server (PS) class for a centralized and decentralized learning setup. This parameter server is responsible for coordinating communication between multiple workers (clients) and maintaining the global model.
 
@@ -35,7 +38,7 @@ client = Client()
 > The above code creates a Client object from the distributed module. This client represents a worker in the decentralized setting.
 
 
-### [Centralized Parameter Server](https://github.com/amoghraj096/CECS-574/blob/main/ParameterServer-Centralized.ipynb)
+### Centralized Parameter Server
 
 ```
 class PS:
@@ -65,7 +68,7 @@ class PS:
 
 > aggregate method: Combines received gradients from multiple workers to update the global model by performing gradient aggregation and an optimization step.
 
-### [Decentralized Parameter Server](https://github.com/amoghraj096/CECS-574/blob/main/ParameterServer-Decentralized.ipynb)
+### Decentralized Parameter Server
 
 ```
 class Worker:
@@ -95,10 +98,13 @@ class Worker:
 
 > recv: Receives gradients from another worker.
 
-> apply_gradients: Aggregates received gradients from all workers and updates 
+> apply_gradients: Aggregates received gradients from all workers and updates
 
-## [Federated learning](https://github.com/amoghraj096/CECS-574/blob/main/FederatedLearning.ipynb)
+> [!NOTE]
+> [Link](https://github.com/amoghraj096/CECS-574/blob/main/ParameterServer-Centralized.ipynb) to the centralized implemntation.\
+> [Link](https://github.com/amoghraj096/CECS-574/blob/main/ParameterServer-Decentralized.ipynb) to the decentralized implemntation.
 
+## [Federated learning]
 The code sets up a deep neural network model and splits the MNIST data into multiple clients. However, it differs in the training loop by conducting local training for a fixed number of iterations per client while recording and storing training loss and accuracy for visualization. After each client's local training, it updates the central server model with averaged weights and evaluates the global model on the test dataset. Additionally, it includes code to plot and visualize the training loss and accuracy for each client throughout the federated learning process using Matplotlib.
 
 Lines of code that implement federated learning:
@@ -120,3 +126,6 @@ averaged_weights = [
 model.set_weights(averaged_weights)
 ```
 > After local training on each client, this part calculates the average of the weights between the global model (model) and the local model (client_model) using a simple element-wise averaging technique. The averaged weights (averaged_weights) are then assigned to the global model (model) using model.set_weights(averaged_weights) to update the global model with the knowledge learned from individual clients.
+
+> [!NOTE]
+> [Link](https://github.com/amoghraj096/CECS-574/blob/main/FederatedLearning.ipynb) to the notebook.
