@@ -1,5 +1,7 @@
 # Comprehensive Analysis of Distributed Machine Learning Approaches
 
+All the implementation use MNIST dataset and can be iimported directly from the libraries. The code can be run directly using the jupyter notebooks.
+
 ## [All reduce](https://github.com/amoghraj096/CECS-574/blob/main/AllReduce.ipynb)
 
 The code sets up a deep neural network model for federated learning on the MNIST dataset using TensorFlow. It defines a model architecture, loss function, optimizer with a learning rate schedule, and splits the data into a specified number of clients. The training loop iterates through the clients and simulates local training, applying gradient updates to each client's model. It then averages the client weights with the global model's weights to update the global model. Finally, it evaluates the global model's performance on the test dataset.
